@@ -1,0 +1,79 @@
+<div class="container-fluid mb-4 mt-4">
+  <div class="row">
+    <div class="col-4">
+      <a class="orange" routerLink="/"> < Back to list</a>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mb-4 mt-4" *ngIf="(airlineDetails | json) !== '{}'">
+  <div class="row">
+    <div class="col-8">
+      <p>{{ airlineDetails.name }}</p>
+      <p *ngIf="airlineDetails.phone">
+        {{ airlineDetails.phone }}
+      </p>
+      <a
+        *ngIf="airlineDetails.site"
+        class="orange"
+        target="_blank"
+        [href]="validateUrl(airlineDetails.site)"
+        >{{ removeUrlPrefix(airlineDetails.site) }}</a
+      >
+    </div>
+    <div class="col-4">
+      <img
+        class="airlineThumb"
+        src="{{ cdnUrlPath + airlineDetails.logoURL }}"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mb-4 mt-4">
+  <div class="row">
+    <div class="col-12">
+      <a class="orange" target="_blank" [href]="this.kayakTrackerURL"
+        >Check flight status</a
+      >
+    </div>
+  </div>
+  <form [formGroup]="searchForm" novalidate>
+    <div class="row mt-2">
+      <div class="col-8">
+        <input
+          type="text"
+          class="form-control"
+          id="searchField"
+          placeholder="Enter Flight number..."
+          formControlName="searchFlight"
+          required
+        />
+      </div>
+      <div class="col-4">
+        <button
+          [disabled]="searchForm.invalid"
+          class="btn btn-orange"
+          (click)="openKayakUrl()"
+        >
+          Check
+        </button>
+      </div>
+      <div class="row mt-2">
+        <div class="col-8">
+          <div
+            *ngIf="searchFlight.invalid && searchFlight.touched"
+            class="alert alert-danger"
+          >
+            <p *ngIf="searchFlight.errors?.['required']">
+              Flight Number is required.
+            </p>
+            <p *ngIf="searchFlight.errors?.['minlength']">
+              Flight Number must be at least 4 characters
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

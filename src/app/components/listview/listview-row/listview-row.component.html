@@ -1,0 +1,37 @@
+<ng-container *ngIf="listDataItems.length; else loaderTemplate">
+  <li class="list-cell" *ngFor="let item of listDataItems">
+    <a routerLink="." (click)="onItemSelected(item)">
+      <img
+        (error)="imgLogo.src = placeholderImg"
+        class="airlineLogo"
+        src="{{ cdnUrlPath + item.logoURL }}"
+        #imgLogo
+      />
+
+      <span class="airlineName"> {{ item.name }}</span>
+    </a>
+  </li>
+</ng-container>
+<ng-template #loaderTemplate>
+  <li class="list-cell" *ngFor="let item of dummyPlaceHolders">
+    <div class="container-fluid">
+      <div class="row align-items-start">
+        <div class="col-2">
+          <ngx-skeleton-loader
+            appearance=""
+            [theme]="{ height: '80px', width: '80px' }"
+          ></ngx-skeleton-loader>
+        </div>
+        <div class="col-10">
+          <ngx-skeleton-loader
+            [theme]="{ height: '20px' }"
+          ></ngx-skeleton-loader>
+
+          <ngx-skeleton-loader
+            [theme]="{ height: '30px' }"
+          ></ngx-skeleton-loader>
+        </div>
+      </div>
+    </div>
+  </li>
+</ng-template>

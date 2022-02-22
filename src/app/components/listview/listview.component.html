@@ -1,0 +1,35 @@
+<div class="container-fluid mb-4 mt-4">
+  <div class="row">
+    <div class="input-group">
+      <input
+        type="text"
+        class="form-control"
+        id="searchField"
+        placeholder="Airline Filter..."
+        #searchInput
+        (keyup)="onSearchFilter(searchInput.value)"
+        (keydown)="onBackspace($event)"
+      />
+
+      <button
+        *ngIf="searchInput.value.length > 0"
+        (click)="onSearchClear()"
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+      ></button>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mx-1">
+  <div class="row">
+    <ul class="list-group">
+      <app-listview-row
+        (itemSelectedEmitter)="selectedItem($event)"
+        [listDataItems]="listViewData"
+      >
+      </app-listview-row>
+    </ul>
+  </div>
+</div>

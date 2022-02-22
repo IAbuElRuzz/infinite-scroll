@@ -1,0 +1,48 @@
+.orange {
+  color: #f49000;
+  text-decoration: none;
+}
+.orange:hover {
+  color: #f48e00cd;
+  text-decoration: underline;
+}
+p {
+  margin-bottom: 0.1rem;
+}
+.btn-orange {
+  background: #f48e00cd;
+  color: #fff;
+  border-radius: 20px;
+  padding: 0.1rem 1rem;
+  box-shadow: none;
+  border: 1px solid #f48e00cd;
+  margin-top: 0.2rem;
+}
+
+.btn-orange:hover .btn-orange:focus,
+.btn-orange:active {
+  background: #fff;
+  color: #f48e00cd;
+  border-radius: 20px;
+  padding: 0.1rem 1rem;
+  box-shadow: none;
+  border: 1px solid #f48e00cd;
+  margin-top: 0.2rem;
+}
+#searchField {
+  border-radius: 20px;
+}
+#searchField:focus {
+  border-radius: 20px;
+  box-shadow: none;
+}
+.airlineThumb {
+  width: 5vh;
+  margin-right: 25px;
+}
+.form-control {
+  padding: 0.3rem 0.75rem;
+}
+.alert {
+  padding: 0.5rem 0.5rem;
+}
